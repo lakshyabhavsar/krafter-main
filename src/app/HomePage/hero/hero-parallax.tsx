@@ -28,7 +28,7 @@ export const HeroParallax = ({
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 5, damping: 5, bounce: 0 };
+  const springConfig = { stiffness: 10, damping: 5, bounce: 0 };
 
   // Adjust the translateX spring configuration to be more responsive. Left and right. for the first row and third row
   const translateX = useSpring(
