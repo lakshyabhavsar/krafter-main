@@ -52,7 +52,7 @@ export const HeroParallax = ({
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.3], [-700, 900]),
+    useTransform(scrollYProgress, [0, 0.3], [-700, 700]),
     springConfig
   );
   return (
