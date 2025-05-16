@@ -30,14 +30,17 @@ export const HeroParallax = ({
 
   const springConfig = { stiffness: 5, damping: 5, bounce: 0 };
 
+  // Adjust the translateX spring configuration to be more responsive. Left and right. for the first row and third row
   const translateX = useSpring(
     useTransform(scrollYProgress, [0, 1], [-50, 1000]),
     springConfig
   );
+  // Adjust the translateXReverse spring configuration to be more responsive. Left and right. for the second row
   const translateXReverse = useSpring(
     useTransform(scrollYProgress, [0, 1], [-100, -1000]),
     springConfig
   );
+  // Adjust the rotateX spring configuration to be more responsive. Up and down rotation tilt
   const rotateX = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [15, 0]), 
     springConfig
@@ -47,19 +50,20 @@ export const HeroParallax = ({
     useTransform(scrollYProgress, [0, 0.2], [0.3, 1]),
     springConfig
   );
+  // Adjust the rotateZ spring configuration to be more responsive. Left and right rotation tilt
   const rotateZ = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [20, 0]),
     springConfig
   );
   // Adjust the translateY spring configuration to be more responsive. Up and down
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.3], [-700, 500]),
+    useTransform(scrollYProgress, [0, 0.3], [-700, 400]),
     springConfig
   );
   return (
     <div
       ref={ref}
-      className="h-[300vh] md:h-[300vh] py-4 md:py-10 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-gradient-to-r from-[#e7e5e8]40 to-[#464444]/50"
+      className="h-[250vh] md:h-[250vh] py-4 md:py-10 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-gradient-to-r from-[#e7e5e8]40 to-[#464444]/50"
     >
       <Header />
       <motion.div
