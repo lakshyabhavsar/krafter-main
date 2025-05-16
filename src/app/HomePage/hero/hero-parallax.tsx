@@ -31,15 +31,15 @@ export const HeroParallax = ({
   const springConfig = { stiffness: 60, damping: 20, bounce: 10 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [-50, 800]),
+    useTransform(scrollYProgress, [0, 1], [-50, 1000]),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [-100, -800]),
+    useTransform(scrollYProgress, [0, 1], [-100, -1000]),
     springConfig
   );
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [15, 0]), 
     springConfig
   );
   // Adjust the opacity spring configuration
@@ -52,7 +52,7 @@ export const HeroParallax = ({
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.3], [-500, 350]),
+    useTransform(scrollYProgress, [0, 0.3], [-700, 500]),
     springConfig
   );
   return (
