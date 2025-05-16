@@ -44,15 +44,16 @@ export const HeroParallax = ({
   );
   // Adjust the opacity spring configuration
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.3, 1]), // Changed from [0.2, 1] to [0.6, 1]
+    useTransform(scrollYProgress, [0, 0.2], [0.3, 1]),
     springConfig
   );
   const rotateZ = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [20, 0]),
     springConfig
   );
+  // Adjust the translateY spring configuration to be more responsive. Up and down
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.3], [-700, 700]),
+    useTransform(scrollYProgress, [0, 0.3], [-700, 500]),
     springConfig
   );
   return (
