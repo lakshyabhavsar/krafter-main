@@ -4,9 +4,9 @@ import { SplineScene } from "./splite";
 import { Card } from "./card"
 import { Spotlight } from "./spotlight"
  
-export function SplineSceneBasic() {
+export function RobotSection() {
   return (
-    <Card className="w-full h-[900px] bg-black/[0.96] relative overflow-hidden">
+    <Card className="w-full h-[100vh] bg-black/[0.96] relative overflow-hidden">
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         size={400}
@@ -17,7 +17,7 @@ export function SplineSceneBasic() {
         {/* Left content */}
         <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
           <h1 className="text-2xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-          We develop AI agents & Automation Tools
+          AI is not feature AI is present
           </h1>
           <p className="mt-2 text-sm md:mt-4 md:text-base text-neutral-300 max-w-lg">
           Either you are a individual or Organisation, develop an AI agent to match the pace of world.

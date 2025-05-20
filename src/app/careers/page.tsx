@@ -1,10 +1,10 @@
-import FeatureCards from "../HomePage/card";
-import DharmaERP from "../HomePage/dharma-erp";
-import HeroSection from "../HomePage/hero";
-import { ImageSection } from "../HomePage/img";
-import MobileCarousel from "../HomePage/mobileCaraousel";
-import Overlay from "../HomePage/overlay";
-import VerticalMenu from "../HomePage/vertical-menu";
+import FeatureCards from "../../components/card";
+import DharmaERP from "../../components/dharma-erp";
+import HeroSection from "../../components/hero";
+import { ImageSection } from "../../components/img";
+import MobileCarousel from "../../components/mobileCaraousel";
+import Overlay from "../../components/overlay";
+import VerticalMenu from "./vertical-menu";
 import CareerSection from "./career/demo";
 import EmailSubscription from "./email/demo";
 import CareerSection2 from "./section2/demo";
@@ -19,7 +19,7 @@ export default function career() {
           <EmailSubscription/>
           <DharmaERP/>
           
-           <HeroSection/> 
+          <HeroSection/> 
           <MobileCarousel/>
           <FeatureCards/>
           <VerticalMenu/>

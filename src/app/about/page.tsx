@@ -2,7 +2,7 @@ import React from "react";
 import { TabsDemo } from "./productTab/demo";
 
 import BannerGrid from "./component/banner-grid";
-import InfiniteCarousel from "./component/mobile";
+import InfiniteCarousel from "../../components/mobile";
 import MobileCaraousel from "./carausel";
 
 

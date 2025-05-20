@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import WhatsAppButton from "@/components/Whatsapp/page";
+import { NavbarDemo } from "@/components/Navbar/navbar-menu-demo";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -22,10 +23,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} font-montserrat antialiased bg-white`}>
-        <div className="fixed top-0 left-0 right-0 z-[997]">
+        {/* <div className="fixed top-0 left-0 right-0 z-[997]">
         <Navbar />
-        </div>
-        <main className="pb-48 md:pb-40 bg-white">
+        </div> */}
+        <header>
+          <NavbarDemo />
+        </header>
+        {/* <main className="pb-48 md:pb-40 bg-white"> */}
+        <main>
           {children}
         </main>
         <div className="fixed bottom-42 md:bottom-38 right-8 z-[999]">

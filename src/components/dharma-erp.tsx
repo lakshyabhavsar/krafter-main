@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const DharmaERP = () => {
   return (
-    <section className="w-full max-w-[1440px] bg-[#e3e2ed] mx-auto">
+    <section className="w-full max-w-[1440px] bg-[#353935] mx-auto">
       <div className="p my-30">
       <h2 className="text-3xl font-bold text-center ">Our Products</h2>
       </div>

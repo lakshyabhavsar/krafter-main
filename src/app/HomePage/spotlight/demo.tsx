@@ -3,10 +3,8 @@ import { Hero } from "./hero"
 function HeroDemo() {
   return (
     <Hero
-      title="We provide bench
-resources on contract 
-and project basis."
-      subtitle="Transform your workflow with intelligent automation. Simple, powerful, reliable."
+      title="Join Our Team: Explore Exciting Careers at Krafter"
+      subtitle="Discover job opportunities, grow your career, and work with industry leaders. Apply now to be part of our innovative team."
       actions={[
         {
           label: "Try Demo",
