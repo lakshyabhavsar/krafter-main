@@ -47,27 +47,14 @@ function RevealImageListItem({ text, images }: ShowImageListItemProps) {
 function RevealImageList() {
   const items: ShowImageListItemProps[] = [
     {
-      text: "ML",
+      text: "Data Mining",
       images: [
         {
-          src: "/images/ML-2.avif",
+          src: "https://images.unsplash.com/photo-1575995872537-3793d29d972c?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
           alt: "Image 1",
         },
         {
-          src: "/images/ML-1.jpg",
-          alt: "Image 2",
-        },
-      ],
-    },
-    {
-      text: "NLP",
-      images: [
-        {
-          src: "/images/NLP-1.webp",
-          alt: "Image 1",
-        },
-        {
-          src: "/images/NLP-2.webp",
+          src: "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
           alt: "Image 2",
         },
       ],
@@ -86,7 +73,7 @@ function RevealImageList() {
       ],
     },
     {
-      text: "Data Mining",
+      text: "Data Visualization",
       images: [
         {
           src: "https://images.unsplash.com/photo-1575995872537-3793d29d972c?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
@@ -99,14 +86,27 @@ function RevealImageList() {
       ],
     },
     {
-      text: "Data Visualization",
+      text: "Machine Learning",
       images: [
         {
-          src: "https://images.unsplash.com/photo-1575995872537-3793d29d972c?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+          src: "/images/ML-2.avif",
           alt: "Image 1",
         },
         {
-          src: "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+          src: "/images/ML-1.jpg",
+          alt: "Image 2",
+        },
+      ],
+    },
+    {
+      text: "Natural Language Processing",
+      images: [
+        {
+          src: "/images/NLP-1.webp",
+          alt: "Image 1",
+        },
+        {
+          src: "/images/NLP-2.webp",
           alt: "Image 2",
         },
       ],
@@ -133,18 +133,20 @@ function RevealImageList() {
         loop
         muted
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover z-0"
       >
         <source src="/bg1.mp4" type="video/mp4" />
         
       </video>
 
       {/* Content Overlay */}
-      <div className="relative z-10 flex flex-col gap-1 rounded-sm  px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 w-full max-w-[1900px] mx-auto h-full flex items-center justify-center">
-        <h3 className="text-3xl sm:text-4xl font-black uppercase text-white">Our services</h3>
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-8">
+      <div className="relative z-10 flex flex-col gap-2 rounded-sm px-2 sm:px-4 md:px-8 w-full max-w-[1900px] mx-auto h-full items-center justify-center">
+        <h3 className="text-xl xs:text-2xl sm:text-4xl font-black uppercase text-white text-center mb-2 sm:mb-4">Data Science</h3>
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4 md:gap-8 w-full">
           {items.map((item, index) => (
-            <RevealImageListItem key={index} text={item.text} images={item.images} />
+            <div key={index} className="flex flex-col items-center">
+              <RevealImageListItem text={item.text} images={item.images} />
+            </div>
           ))}
         </div>
       </div>

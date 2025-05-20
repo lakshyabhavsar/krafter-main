@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import AnimatedScrollContainer from "@/components/AnimatedScrollContainer";
-import InfiniteCarousel from "@/components/mobile";
-import PortfolioGrid from "@/app/digital-marketing/portfolio/demo";
 
 const serviceCategories = [
   {
@@ -152,22 +150,21 @@ const ServicesSection = () => {
     <div className="relative min-h-screen bg-gradient-to-br from-[#f0f4ff] via-[#e0e7ff] to-[#f0f0f0] pb-20">
       {/* Hero Section */}
       <AnimatedScrollContainer>
-        <section className="w-full flex flex-col items-start justify-center py-12 sm:py-20 px-2 sm:px-4 text-left bg-gradient-to-r from-[#e0e7ff] via-[#c5d3ff] to-[#f0f4ff] relative overflow-hidden">
+        <section className="w-full flex flex-col items-start justify-center py-20 px-4 text-left bg-gradient-to-r from-[#e0e7ff] via-[#c5d3ff] to-[#f0f4ff] relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#90caf9]/20 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto w-full">
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#463cc9] via-[#6a5afc] to-[#90caf9] text-transparent bg-clip-text drop-shadow-lg mb-2 sm:mb-4">
+            <h1 className="text-5xl sm:text-7xl font-extrabold uppercase tracking-wider text-[#1a237e] drop-shadow-lg mb-4">
               Our Services
             </h1>
-            <p className="mt-2 text-base xs:text-lg sm:text-2xl text-[#3949ab] max-w-full sm:max-w-2xl">
+            <p className="mt-2 text-lg sm:text-2xl text-[#3949ab] max-w-2xl">
               Empowering your business with cutting-edge technology, creative solutions, and strategic growth.
             </p>
           </div>
         </section>
       </AnimatedScrollContainer>
-      <hr className="my-8 border-t-2 border-[#e0e7ff] w-full" />
 
       {/* Sidebar + Main Content */}
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 md:gap-8 px-2 sm:px-4 mt-[-30px] md:mt-[-60px] z-10 relative">
+      <div className="max-w-7xl mx-auto flex flex-row gap-8 px-4 mt-[-60px] z-10 relative">
         {/* Sidebar */}
         <aside className="hidden md:block w-64 sticky top-32 self-start">
           <nav className="flex flex-col gap-4 bg-white/80 rounded-2xl shadow-xl p-6">
@@ -187,7 +184,7 @@ const ServicesSection = () => {
           </nav>
         </aside>
         {/* Main Content Sections */}
-        <div className="flex-1 flex flex-col gap-4 bg-transparent">
+        <div className="flex-1 flex flex-col gap-0 bg-transparent">
           {serviceCategories.map((cat, idx) => (
             <React.Fragment key={cat.id}>
               <div
@@ -196,11 +193,14 @@ const ServicesSection = () => {
               >
                 <AnimatedScrollContainer animationClass="animate-fadeInUp">
                   <div className="group bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-8 flex flex-col items-center transition-all duration-500 border border-transparent">
+                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#463cc9] to-[#90caf9] flex items-center justify-center mb-6 shadow-lg overflow-hidden">
+                      <img src={cat.icon} alt={cat.title} className="w-16 h-16 object-contain" />
+                    </div>
                     <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-[#463cc9] via-[#6a5afc] to-[#90caf9] text-transparent bg-clip-text">
-                      {idx === 0 ? 'We Develop' : cat.title}
+                      {cat.title}
                     </h2>
                     <p className="text-gray-700 text-base mb-4 min-h-[60px] text-center">{cat.description}</p>
-                    <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 gap-3 sm:gap-4 w-full mt-4 sm:mt-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mt-6">
                       {cat.details.map((detail, dIdx) => (
                         <div key={dIdx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg transition-all duration-300">
                           <h3 className="text-base font-semibold mb-1 text-[#463cc9]">{detail.title}</h3>
@@ -208,16 +208,6 @@ const ServicesSection = () => {
                         </div>
                       ))}
                     </div>
-                    {idx === 0 && (
-                      <div className="w-full mt-8">
-                        <InfiniteCarousel />
-                      </div>
-                    )}
-                    {idx === 1 && (
-                      <div className="w-full mt-8">
-                        <PortfolioGrid />
-                      </div>
-                    )}
                   </div>
                 </AnimatedScrollContainer>
               </div>
@@ -233,7 +223,7 @@ const ServicesSection = () => {
       {selectedCategory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
           <AnimatedScrollContainer>
-            <div className="bg-white/80 rounded-3xl shadow-2xl max-w-full w-full p-2 xs:p-4 sm:p-6 relative animate-fadeInUp max-h-[80vh] overflow-y-auto">
+            <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-4 sm:p-6 relative animate-fadeInUp max-h-[80vh] overflow-y-auto">
               <button
                 className="absolute top-2 right-2 text-gray-500 hover:text-[#463cc9] text-2xl font-bold"
                 onClick={() => setSelectedCategory(null)}
@@ -242,11 +232,15 @@ const ServicesSection = () => {
                 ×
               </button>
               <div className="flex flex-col items-center mb-4">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#463cc9] to-[#90caf9] flex items-center justify-center mb-2 shadow-lg overflow-hidden">
+                  <img src={selectedCategory.icon} alt={selectedCategory.title} className="w-10 h-10 object-contain" />
+                </div>
                 <h2 className="text-2xl font-bold bg-gradient-to-r from-[#463cc9] via-[#6a5afc] to-[#90caf9] text-transparent bg-clip-text mb-1">
                   {selectedCategory.title}
                 </h2>
+                <p className="text-gray-700 text-sm text-center mb-2">{selectedCategory.description}</p>
               </div>
-              <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {selectedCategory.details.map((detail, idx) => (
                   <div key={idx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg transition-all duration-300">
                     <h3 className="text-base font-semibold mb-1 text-[#463cc9]">{detail.title}</h3>
