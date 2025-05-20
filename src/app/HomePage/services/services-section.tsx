@@ -1,49 +1,43 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-// Remove the unused Image import
-// import Image from 'next/image';
 
 const ServicesSection = () => {
   const [activeSection, setActiveSection] = useState(1);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [isInView, setIsInView] = useState(true);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Responsive: track if mobile
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const verticalSection = document.getElementById("vertical-menu-section");
-      if (verticalSection) {
-        const rect = verticalSection.getBoundingClientRect();
-        const isFullyVisible =
-          rect.top >= 0 && rect.bottom <= window.innerHeight;
-        const isPartiallyVisible =
-          rect.top < window.innerHeight && rect.bottom >= 0;
-        setIsInView(isFullyVisible || isPartiallyVisible);
-
-        // Check which section is most visible
-        const sectionElements = sectionRefs.current;
-        let maxVisibleSection = activeSection;
-        let maxVisibleArea = 0;
-
-        sectionElements.forEach((section, index) => {
-          if (section) {
-            const rect = section.getBoundingClientRect();
-            const visibleHeight =
-              Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-            if (visibleHeight > maxVisibleArea && visibleHeight > 0) {
-              maxVisibleArea = visibleHeight;
-              maxVisibleSection = index + 1;
-            }
-          }
-        });
-
-        setActiveSection(maxVisibleSection);
-      }
+    if (observerRef.current) observerRef.current.disconnect();
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5, // 50% of section visible
     };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [activeSection]);
+    observerRef.current = new window.IntersectionObserver((entries) => {
+      let maxRatio = 0;
+      let visibleSection = activeSection;
+      entries.forEach((entry, idx) => {
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+          maxRatio = entry.intersectionRatio;
+          visibleSection = idx + 1;
+        }
+      });
+      setActiveSection((prev) => (prev !== visibleSection ? visibleSection : prev));
+    }, options);
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observerRef.current?.observe(ref);
+    });
+    return () => observerRef.current?.disconnect();
+  }, []);
 
   const handleMenuClick = (sectionId: number) => {
     setActiveSection(sectionId);
@@ -167,42 +161,71 @@ const ServicesSection = () => {
         </p>
       </div>
       <div className="relative" id="vertical-menu-section">
-        {/* Vertical Navigation Menu */}
-        <div className="sticky top-[20%] left-0 h-0 z-20 pointer-events-auto">
-          <div
-            className={`absolute left-8 transition-opacity duration-300 ${
-              isInView ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-          >
-            <div className="flex flex-col space-y-6">
-              {sections.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => handleMenuClick(section.id)}
-                  className={`text-left transition-all duration-300 group ${
-                    activeSection === section.id
-                      ? "text-black"
-                      : "text-gray-400"
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <div
-                      className={`w-1 h-8 mr-4 transition-all duration-300 ${
-                        activeSection === section.id
-                          ? "bg-[#463cc9]"
-                          : "bg-transparent"
-                      }`}
-                    />
-                    <span className="text-lg font-medium">
-                      {section.title.replace(".", "")}
-                    </span>
-                  </div>
-                </button>
-              ))}
+        {/* Sidebar for desktop, horizontal bar for mobile */}
+        {!isMobile ? (
+          <div className="sticky top-[20%] left-0 h-0 z-20 pointer-events-auto">
+            <div className="absolute left-8 transition-opacity duration-300 opacity-100">
+              <div className="flex flex-col space-y-6">
+                {sections.map((section) => (
+                  <button
+                    key={section.id}
+                    onClick={() => handleMenuClick(section.id)}
+                    aria-current={activeSection === section.id ? "true" : undefined}
+                    aria-label={section.title}
+                    className={`text-left transition-all duration-300 group focus:outline-none relative ${
+                      activeSection === section.id
+                        ? "text-black scale-105"
+                        : "text-gray-400"
+                    }`}
+                  >
+                    <div className="flex items-center">
+                      <div
+                        className={`w-1 h-8 mr-4 transition-all duration-300 ${
+                          activeSection === section.id
+                            ? "bg-[#463cc9]"
+                            : "bg-transparent"
+                        }`}
+                      />
+                      <span className="text-lg font-medium relative">
+                        {section.title.replace(".", "")}
+                        {activeSection === section.id && (
+                          <span
+                            className="absolute left-0 -bottom-1 w-full h-1 bg-gradient-to-r from-[#463cc9] to-[#90caf9] rounded-full animate-fadeInOut"
+                            style={{ transition: "all 0.3s" }}
+                          ></span>
+                        )}
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-
+        ) : (
+          <div className="w-full overflow-x-auto flex space-x-4 py-4 px-2 bg-white sticky top-0 z-30 border-b border-gray-200">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => handleMenuClick(section.id)}
+                aria-current={activeSection === section.id ? "true" : undefined}
+                aria-label={section.title}
+                className={`px-4 py-2 rounded-full whitespace-nowrap transition-all duration-300 focus:outline-none relative ${
+                  activeSection === section.id
+                    ? "bg-[#463cc9] text-white scale-105 shadow-lg"
+                    : "bg-gray-200 text-gray-700"
+                }`}
+              >
+                {section.title.replace(".", "")}
+                {activeSection === section.id && (
+                  <span
+                    className="absolute left-0 -bottom-1 w-full h-1 bg-gradient-to-r from-[#463cc9] to-[#90caf9] rounded-full animate-fadeInOut"
+                    style={{ transition: "all 0.3s" }}
+                  ></span>
+                )}
+              </button>
+            ))}
+          </div>
+        )}
         {/* Main Content */}
         <div className="w-full snap-y snap-mandatory h-screen overflow-y-auto">
           {sections.map((section, idx) => (
