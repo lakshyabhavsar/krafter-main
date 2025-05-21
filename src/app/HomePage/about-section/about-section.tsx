@@ -18,10 +18,11 @@ export default function AboutSection() {
           {/* Content Column */}
           <div className="space-y-8">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-[#5b35b5] via-[#7c3aed] to-[#5b35b5] bg-clip-text text-transparent drop-shadow-md">
-              {"We're just getting started"}
+              {"Our Story"}
             </h2>
             <p className="text-[#464647] text-base sm:text-lg lg:text-xl leading-relaxed">
-              Codekrafter is growing fast, and we are always looking for passionate, dynamic, and talented individuals to join our distributed team all around the world.
+            CodeKrafters is a boutique IT servicing company offering cutting-edge Web 2.5, 3.0, and 3.5 solutions, along with contract-based augmentation employment services. With minimal hierarchy, every project gets the direct involvement of our CXOs and core team—ensuring speed, transparency, and true personalization. Operating primarily remotely, and with a presence in Mumbai and Indore, we blend flexibility with focus to deliver tech solutions that are lean, agile, and high-impact.
+            Let me know if you'd like to add any specific industry mentions or tweak the tone further!
             </p>
             <p className="text-[#464647] text-base sm:text-lg lg:text-xl leading-relaxed">
               Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to do your best work.

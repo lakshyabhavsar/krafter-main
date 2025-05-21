@@ -17,7 +17,7 @@ export function RobotSection() {
         {/* Left content */}
         <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
           <h1 className="text-2xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-          AI is not feature AI is present
+          AI is not future AI is present
           </h1>
           <p className="mt-2 text-sm md:mt-4 md:text-base text-neutral-300 max-w-lg">
           Either you are a individual or Organisation, develop an AI agent to match the pace of world.
