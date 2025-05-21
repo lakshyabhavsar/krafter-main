@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./navbar-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -166,15 +166,15 @@ function Navbar({ className }: { className?: string }) {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 mt-1 mx-auto max-w-4xl bg-white shadow-lg rounded-md bg-white dark:bg-black border border-neutral-200 dark:border-neutral-700 z-50">
           <div className="flex flex-col gap-4 p-4">
-          <Link
-                  href="/about"
-                  className="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-neutral-700 dark:text-neutral-200 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-400 transition"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <span className="text-xs text-neutral-400">&#8594;</span>
-                  About Us
-                </Link>
-            
+            <Link
+              href="/about"
+              className="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-neutral-700 dark:text-neutral-200 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-400 transition"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span className="text-xs text-neutral-400">&#8594;</span>
+              About Us
+            </Link>
+
             {/* IT Services */}
             <div>
               <p className="px-3 pb-1 text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">

@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
-import { motion } from "motion/react";
-
-
+import { motion } from "framer-motion";
 
 const transition = {
   type: "spring",
@@ -105,7 +103,7 @@ export const ProductItem = ({
           {description}
         </p>
       </div>
-    </a>    
+    </a>
   );
 };
 
