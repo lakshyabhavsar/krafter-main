@@ -131,13 +131,20 @@ const ServicesSection = () => {
 
   // Scroll handler to update active sidebar option
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const offsets = sectionRefs.map(ref => ref.current?.getBoundingClientRect().top ?? 0);
-      const activeIdx = offsets.findIndex((offset, idx) => {
-        if (idx === offsets.length - 1) return offset < window.innerHeight / 2;
-        return offset < window.innerHeight / 2 && offsets[idx + 1] > window.innerHeight / 2;
-      });
-      setActiveSection(activeIdx === -1 ? 0 : activeIdx);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const offsets = sectionRefs.map(ref => ref.current?.getBoundingClientRect().top ?? 0);
+          const activeIdx = offsets.findIndex((offset, idx) => {
+            if (idx === offsets.length - 1) return offset < window.innerHeight / 2;
+            return offset < window.innerHeight / 2 && offsets[idx + 1] > window.innerHeight / 2;
+          });
+          setActiveSection(activeIdx === -1 ? 0 : activeIdx);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -152,7 +159,7 @@ const ServicesSection = () => {
     <div className="relative min-h-screen bg-gradient-to-br from-[#f0f4ff] via-[#e0e7ff] to-[#f0f0f0] pb-20">
       {/* Hero Section */}
       <AnimatedScrollContainer>
-        <section className="w-full flex flex-col items-start justify-center py-4 sm:py-8 px-2 sm:px-4 text-left bg-gradient-to-r from-[#e0e7ff] via-[#c5d3ff] to-[#f0f4ff] relative overflow-hidden">
+        <section className="w-full flex flex-col items-start justify-center py-16 sm:py-28 px-2 sm:px-4 text-left bg-gradient-to-r from-[#e0e7ff] via-[#c5d3ff] to-[#f0f4ff] relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#90caf9]/20 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto w-full">
             <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#463cc9] via-[#6a5afc] to-[#90caf9] text-transparent bg-clip-text drop-shadow-lg mb-2 sm:mb-4">
@@ -174,7 +181,7 @@ const ServicesSection = () => {
             {serviceCategories.map((cat, idx) => (
               <button
                 key={cat.id}
-                className={`text-left px-4 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                className={`text-left px-4 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out ${
                   activeSection === idx
                     ? "bg-gradient-to-r from-[#463cc9] to-[#90caf9] text-white shadow-lg"
                     : "bg-transparent text-[#463cc9] hover:bg-[#e0e7ff]"
@@ -195,14 +202,14 @@ const ServicesSection = () => {
                 className="scroll-mt-32"
               >
                 <AnimatedScrollContainer animationClass="animate-fadeInUp">
-                  <div className="group bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-8 flex flex-col items-center transition-all duration-500 border border-transparent">
+                  <div className="group bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-8 flex flex-col items-center transition-all duration-500 ease-in-out border border-transparent">
                     <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-[#463cc9] via-[#6a5afc] to-[#90caf9] text-transparent bg-clip-text">
                       {idx === 0 ? 'We Develop' : cat.title}
                     </h2>
                     <p className="text-gray-700 text-base mb-4 min-h-[60px] text-center">{cat.description}</p>
                     <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 gap-3 sm:gap-4 w-full mt-4 sm:mt-6">
                       {cat.details.map((detail, dIdx) => (
-                        <div key={dIdx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg transition-all duration-300">
+                        <div key={dIdx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
                           <h3 className="text-base font-semibold mb-1 text-[#463cc9]">{detail.title}</h3>
                           <p className="text-gray-700 text-xs">{detail.description}</p>
                         </div>
@@ -222,7 +229,7 @@ const ServicesSection = () => {
                 </AnimatedScrollContainer>
               </div>
               {idx < serviceCategories.length - 1 && (
-                <hr className="my-12 border-t-2 border-[#e0e7ff] w-full" />
+                <hr className="my-4 border-t-2 border-[#e0e7ff] w-full" />
               )}
             </React.Fragment>
           ))}
@@ -233,7 +240,7 @@ const ServicesSection = () => {
       {selectedCategory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
           <AnimatedScrollContainer>
-            <div className="bg-white/80 rounded-3xl shadow-2xl max-w-full w-full p-2 xs:p-4 sm:p-6 relative animate-fadeInUp max-h-[80vh] overflow-y-auto">
+            <div className="bg-white/80 rounded-3xl shadow-2xl max-w-full w-full p-2 xs:p-4 sm:p-6 relative animate-fadeInUp max-h-[80vh] overflow-y-auto transition-all duration-500 ease-in-out">
               <button
                 className="absolute top-2 right-2 text-gray-500 hover:text-[#463cc9] text-2xl font-bold"
                 onClick={() => setSelectedCategory(null)}
@@ -248,7 +255,7 @@ const ServicesSection = () => {
               </div>
               <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-4">
                 {selectedCategory.details.map((detail, idx) => (
-                  <div key={idx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg transition-all duration-300">
+                  <div key={idx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
                     <h3 className="text-base font-semibold mb-1 text-[#463cc9]">{detail.title}</h3>
                     <p className="text-gray-700 text-xs">{detail.description}</p>
                   </div>
