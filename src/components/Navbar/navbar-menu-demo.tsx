@@ -34,7 +34,7 @@ function Navbar({ className }: { className?: string }) {
             />
             <Image
               src="/images/logo3-code.png"
-              alt="Secondary Log  o"
+              alt="Secondary Logo"
               width={56}
               height={28}
               className="absolute left-full w-[40px] md:w-[56px] opacity-0 transition-all duration-300 transform translate-x-[-8px] group-hover:opacity-100 group-hover:translate-x-[-2px]"
