@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import WhatsAppButton from "@/components/Whatsapp/page";
 import { NavbarDemo } from "@/components/Navbar/navbar-menu-demo";
+import WhatsAppButton from "@/components/floating-icons/whatsapp";
+import Chatbot from "@/components/floating-icons/chatbot";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -21,24 +22,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} font-montserrat antialiased bg-white`}>
-        {/* <div className="fixed top-0 left-0 right-0 z-[997]">
-        <Navbar />
-        </div> */}
+      <body
+        className={`${montserrat.variable} font-montserrat antialiased bg-white`}
+      >
         <header>
           <NavbarDemo />
         </header>
-        {/* <main className="pb-48 md:pb-40 bg-white"> */}
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
         <div className="fixed bottom-42 md:bottom-38 right-8 z-[999]">
+          <Chatbot />
           <WhatsAppButton />
         </div>
-        
-       {/* <div className="fixed bottom-0 left-0 right-0 z-[998]">
-          <AppleStyleDock />
-        </div> */}
       </body>
     </html>
   );
