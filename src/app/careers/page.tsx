@@ -10,23 +10,17 @@ import EmailSubscription from "./email/demo";
 import CareerSection2 from "./section2/demo";
 
 export default function career() {
-    return (
-      <>
-        <div className="space-y-24">
-          
-          <CareerSection/>
-          <CareerSection2/>
-          <EmailSubscription/>
-          <DharmaERP/>
-          
-          <HeroSection/> 
-          <MobileCarousel/>
-          <FeatureCards/>
-          <VerticalMenu/>
-          <ImageSection/> 
-          <Overlay/>
-        </div>
-      </>
-    );
-  }
-  
+  return (
+    <>
+      <CareerSection />
+      <EmailSubscription />
+
+      {/* <HeroSection/>  */}
+      {/* <MobileCarousel/> */}
+      {/* <FeatureCards/> */}
+      {/* <VerticalMenu/> */}
+      {/* <ImageSection/>  */}
+      {/* <Overlay/> */}
+    </>
+  );
+}

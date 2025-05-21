@@ -81,12 +81,6 @@ export default function CareerSection() {
 
   return (
     <div className="min-w-[320px] max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-      {/* Careers Badge */}
-      <div className="flex justify-center mb-8">
-        <span className="inline-flex items-center rounded-full bg-[#5D3891]/10 px-4 py-1 text-sm font-medium text-[#5D3891] ring-1 ring-inset ring-[#5D3891]/20">
-          Careers
-        </span>
-      </div>
 
       {/* Hero Section */}
       <div className="text-center max-w-[280px] sm:max-w-2xl lg:max-w-4xl mx-auto mb-8 sm:mb-12 lg:mb-16">
