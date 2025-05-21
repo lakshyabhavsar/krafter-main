@@ -1,11 +1,7 @@
 import Overlay from "../components/overlay";
-import { HeroSection } from "./HomePage/hero/hero-demo";
 import { RobotSection } from "./HomePage/robot/robot-demo";
-import TrustedBy from "../components/trusted";
 import FooterNav from "@/components/Footer/FooterNav";
-import BannerGrid from "./HomePage/certificate/allBanner";
 import { HeroDemo } from "./HomePage/spotlight/demo";
-import { AnimatedBeamDemo } from "./digital-marketing/annimated-beam/demo";
 import AboutSection from "./HomePage/about-section/about-section";
 import ServicesSection from "./HomePage/services/services-section";
 import { RevealImageListDemo } from "./HomePage/reveal-images/demo";
