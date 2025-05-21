@@ -156,7 +156,7 @@ const ServicesSection = () => {
       {/* Sidebar + Main Content */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 md:gap-8 px-2 sm:px-4 mt-[-30px] md:mt-[-60px] z-10 relative max-md:overflow-y-auto max-md:max-h-[calc(100vh-120px)]">
         {/* Sidebar */}
-        <aside className="hidden md:block w-64 sticky top-[30rem] self-start">
+        <aside className="hidden md:block w-64 sticky top-[15rem] self-start">
           <nav className="flex flex-col gap-4 bg-white/80 rounded-2xl shadow-xl p-6">
             {serviceCategories.map((cat, idx) => (
               <button
