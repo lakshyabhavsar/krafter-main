@@ -10,7 +10,6 @@ const serviceCategories = [
     title: "Mobile App Development",
     description:
       "Dedicated software engineering teams that include technical rising stars customer expectations and accelerate your growth.",
-    icon: "/images/home/vr1.png",
     details: [
       {
         title: "Android Apps",
@@ -39,7 +38,6 @@ const serviceCategories = [
     title: "Web Development",
     description:
       "Streamline your software engineering to drive greater efficiency and create resilience across your products and platforms.",
-    icon: "/images/home/vr4.png",
     details: [
       {
         title: "Corporate Website",
@@ -68,7 +66,6 @@ const serviceCategories = [
     title: "Digital Marketing",
     description:
       "Expert advice and strategic planning to help your business navigate complex challenges and achieve sustainable growth.",
-    icon: "/images/home/vr2.png",
     details: [
       {
         title: "Dharma ERP",
@@ -100,7 +97,6 @@ const serviceCategories = [
 ];
 
 const ServicesSection = () => {
-  const [selectedCategory, setSelectedCategory] = useState<null | typeof serviceCategories[0]>(null);
   const [activeSection, setActiveSection] = useState(0);
   const sectionRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)];
 
@@ -138,7 +134,7 @@ const ServicesSection = () => {
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-[#f0f4ff] via-[#e0e7ff] to-[#f0f0f0] pb-20 max-md:overflow-y-auto max-md:max-h-screen">
       {/* Hero Section */}
-      <AnimatedScrollContainer>
+      <AnimatedScrollContainer durationClass="duration-1000" easingClass="ease-in-out">
         <section className="w-full flex flex-col items-start justify-center py-24 xs:py-32 sm:py-36 px-4 xs:px-6 sm:px-8 text-left bg-transparent relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#90caf9]/20 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto w-full">
@@ -215,36 +211,6 @@ const ServicesSection = () => {
           ))}
         </div>
       </div>
-
-      {/* Modal for Service Details */}
-      {selectedCategory && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm max-md:overflow-y-auto max-md:max-h-screen">
-          <AnimatedScrollContainer>
-            <div className="bg-white/80 rounded-3xl shadow-2xl max-w-full w-full p-2 xs:p-4 sm:p-6 relative animate-fadeInUp max-h-[80vh] overflow-y-auto transition-all duration-500 ease-in-out">
-              <button
-                className="absolute top-2 right-2 text-gray-500 hover:text-[#463cc9] active:text-[#463cc9] focus:text-[#463cc9] text-2xl font-bold"
-                onClick={() => setSelectedCategory(null)}
-                aria-label="Close"
-              >
-                ×
-              </button>
-              <div className="flex flex-col items-center mb-4">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-[#463cc9] via-[#6a5afc] to-[#90caf9] text-transparent bg-clip-text mb-1">
-                  {selectedCategory.title}
-                </h2>
-              </div>
-              <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-4">
-                {selectedCategory.details.map((detail, idx) => (
-                  <div key={idx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg active:shadow-lg focus:shadow-lg transition-all duration-300 ease-in-out">
-                    <h3 className="text-base font-semibold mb-1 text-[#463cc9]">{detail.title}</h3>
-                    <p className="text-gray-700 text-xs">{detail.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </AnimatedScrollContainer>
-        </div>
-      )}
     </div>
   );
 };

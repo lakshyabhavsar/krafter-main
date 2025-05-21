@@ -4,12 +4,16 @@ interface AnimatedScrollContainerProps {
   children: ReactNode;
   className?: string;
   animationClass?: string; // e.g., 'animate-fadeInUp'
+  durationClass?: string; // e.g., 'duration-700'
+  easingClass?: string; // e.g., 'ease-in-out'
 }
 
 const AnimatedScrollContainer: React.FC<AnimatedScrollContainerProps> = ({
   children,
   className = "",
   animationClass = "animate-fadeInUp",
+  durationClass = "duration-700",
+  easingClass = "ease-in-out",
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +37,7 @@ const AnimatedScrollContainer: React.FC<AnimatedScrollContainerProps> = ({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 opacity-0 translate-y-8 ${
+      className={`transition-opacity transition-transform ${durationClass} ${easingClass} opacity-0 translate-y-8 ${
         isVisible ? `opacity-100 translate-y-0 ${animationClass}` : ""
       } ${className}`}
     >
