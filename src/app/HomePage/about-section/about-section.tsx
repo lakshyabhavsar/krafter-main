@@ -21,8 +21,8 @@ export default function AboutSection() {
               {"Our Story"}
             </h2>
             <p className="text-[#464647] text-base sm:text-lg lg:text-xl leading-relaxed">
-            CodeKrafters is a boutique IT servicing company offering cutting-edge Web 2.5, 3.0, and 3.5 solutions, along with contract-based augmentation employment services. With minimal hierarchy, every project gets the direct involvement of our CXOs and core team—ensuring speed, transparency, and true personalization. Operating primarily remotely, and with a presence in Mumbai and Indore, we blend flexibility with focus to deliver tech solutions that are lean, agile, and high-impact.
-            Let me know if you'd like to add any specific industry mentions or tweak the tone further!
+            {"CodeKrafters is a boutique IT servicing company offering cutting-edge Web 2.5, 3.0, and 3.5 solutions, along with contract-based augmentation employment services. With minimal hierarchy, every project gets the direct involvement of our CXOs and core team—ensuring speed, transparency, and true personalization. Operating primarily remotely, and with a presence in Mumbai and Indore, we blend flexibility with focus to deliver tech solutions that are lean, agile, and high-impact."}
+            {"Let me know if you'd like to add any specific industry mentions or tweak the tone further!"}
             </p>
             <p className="text-[#464647] text-base sm:text-lg lg:text-xl leading-relaxed">
               Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to do your best work.
