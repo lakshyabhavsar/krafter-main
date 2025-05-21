@@ -61,31 +61,6 @@ const serviceCategories = [
         description:
           "Robust portal development for businesses and organizations, enabling efficient information management, user collaboration, and secure access with SEO best practices.",
       },
-      {
-        title: "Dharma ERP",
-        description:
-          "Comprehensive ERP software for businesses to streamline operations, manage resources, and drive digital transformation. Boost productivity and efficiency with our scalable Dharma ERP solutions.",
-      },
-      {
-        title: "CRM",
-        description:
-          "Advanced CRM development for effective customer relationship management, sales automation, and improved client engagement. Enhance your business growth with our custom CRM solutions.",
-      },
-      {
-        title: "Sub Contracting",
-        description:
-          "Efficient subcontracting management systems to optimize project workflows, track contracts, and ensure compliance. Simplify your business processes with our tailored subcontracting solutions.",
-      },
-      {
-        title: "Sales",
-        description:
-          "Powerful sales management platforms to automate sales processes, track leads, and increase conversions. Drive revenue growth with our innovative sales solutions for your business.",
-      },
-      {
-        title: "Finance",
-        description:
-          "Secure finance management systems for real-time tracking, reporting, and analysis. Improve financial decision-making and compliance with our robust finance software solutions.",
-      },
     ],
   },
   {
@@ -161,16 +136,16 @@ const ServicesSection = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#f0f4ff] via-[#e0e7ff] to-[#f0f0f0] pb-20">
+    <div className="relative min-h-screen bg-gradient-to-br from-[#f0f4ff] via-[#e0e7ff] to-[#f0f0f0] pb-20 max-md:overflow-y-auto max-md:max-h-screen">
       {/* Hero Section */}
       <AnimatedScrollContainer>
-        <section className="w-full flex flex-col items-start justify-center py-16 sm:py-28 px-2 sm:px-4 text-left bg-transparent relative overflow-hidden">
+        <section className="w-full flex flex-col items-start justify-center py-24 xs:py-32 sm:py-36 px-4 xs:px-6 sm:px-8 text-left bg-transparent relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#90caf9]/20 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto w-full">
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#463cc9] via-[#6a5afc] to-[#90caf9] text-transparent bg-clip-text drop-shadow-lg mb-2 sm:mb-4">
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#463cc9] via-[#6a5afc] to-[#90caf9] text-transparent bg-clip-text drop-shadow-lg mb-4 xs:mb-6 sm:mb-8">
               Our Services
             </h1>
-            <p className="mt-2 text-base xs:text-lg sm:text-2xl text-[#3949ab] max-w-full sm:max-w-2xl">
+            <p className="mt-4 text-lg xs:text-xl sm:text-2xl text-[#3949ab] max-w-full sm:max-w-2xl">
               Empowering your business with cutting-edge technology, creative solutions, and strategic growth.
             </p>
           </div>
@@ -179,9 +154,9 @@ const ServicesSection = () => {
       <hr className="my-8 border-t-2 border-[#e0e7ff] w-1/2" />
 
       {/* Sidebar + Main Content */}
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 md:gap-8 px-2 sm:px-4 mt-[-30px] md:mt-[-60px] z-10 relative">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 md:gap-8 px-2 sm:px-4 mt-[-30px] md:mt-[-60px] z-10 relative max-md:overflow-y-auto max-md:max-h-[calc(100vh-120px)]">
         {/* Sidebar */}
-        <aside className="hidden md:block w-64 sticky top-[12rem] self-start">
+        <aside className="hidden md:block w-64 sticky top-[30rem] self-start">
           <nav className="flex flex-col gap-4 bg-white/80 rounded-2xl shadow-xl p-6">
             {serviceCategories.map((cat, idx) => (
               <button
@@ -189,7 +164,7 @@ const ServicesSection = () => {
                 className={`text-left px-4 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out ${
                   activeSection === idx
                     ? "bg-gradient-to-r from-[#463cc9] to-[#90caf9] text-white shadow-lg"
-                    : "bg-transparent text-[#463cc9] hover:bg-[#e0e7ff]"
+                    : "bg-transparent text-[#463cc9] hover:bg-[#e0e7ff] active:bg-[#e0e7ff] focus:bg-[#e0e7ff]"
                 }`}
                 onClick={() => scrollToSection(idx)}
               >
@@ -199,7 +174,7 @@ const ServicesSection = () => {
           </nav>
         </aside>
         {/* Main Content Sections */}
-        <div className="flex-1 flex flex-col gap-4 bg-transparent">
+        <div className="flex-1 flex flex-col gap-4 bg-transparent max-md:overflow-y-auto max-md:max-h-[calc(100vh-180px)]">
           {serviceCategories.map((cat, idx) => (
             <React.Fragment key={cat.id}>
               <div
@@ -214,7 +189,7 @@ const ServicesSection = () => {
                     <p className="text-gray-700 text-base mb-4 min-h-[60px] text-center">{cat.description}</p>
                     <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 gap-3 sm:gap-4 w-full mt-4 sm:mt-6">
                       {cat.details.map((detail, dIdx) => (
-                        <div key={dIdx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+                        <div key={dIdx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg active:shadow-lg focus:shadow-lg transition-all duration-300 ease-in-out">
                           <h3 className="text-base font-semibold mb-1 text-[#463cc9]">{detail.title}</h3>
                           <p className="text-gray-700 text-xs">{detail.description}</p>
                         </div>
@@ -243,11 +218,11 @@ const ServicesSection = () => {
 
       {/* Modal for Service Details */}
       {selectedCategory && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm max-md:overflow-y-auto max-md:max-h-screen">
           <AnimatedScrollContainer>
             <div className="bg-white/80 rounded-3xl shadow-2xl max-w-full w-full p-2 xs:p-4 sm:p-6 relative animate-fadeInUp max-h-[80vh] overflow-y-auto transition-all duration-500 ease-in-out">
               <button
-                className="absolute top-2 right-2 text-gray-500 hover:text-[#463cc9] text-2xl font-bold"
+                className="absolute top-2 right-2 text-gray-500 hover:text-[#463cc9] active:text-[#463cc9] focus:text-[#463cc9] text-2xl font-bold"
                 onClick={() => setSelectedCategory(null)}
                 aria-label="Close"
               >
@@ -260,7 +235,7 @@ const ServicesSection = () => {
               </div>
               <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-4">
                 {selectedCategory.details.map((detail, idx) => (
-                  <div key={idx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+                  <div key={idx} className="bg-[#f0f4ff] rounded-xl p-3 shadow-md hover:shadow-lg active:shadow-lg focus:shadow-lg transition-all duration-300 ease-in-out">
                     <h3 className="text-base font-semibold mb-1 text-[#463cc9]">{detail.title}</h3>
                     <p className="text-gray-700 text-xs">{detail.description}</p>
                   </div>

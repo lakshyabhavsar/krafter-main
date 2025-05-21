@@ -14,7 +14,6 @@ export default function Home() {
       <ServicesSection />
       <RevealImageListDemo />
       <HeroDemo />
-      <Overlay />
       <FooterNav />
     </>
   );
