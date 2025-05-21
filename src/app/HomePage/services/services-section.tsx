@@ -132,6 +132,7 @@ const ServicesSection = () => {
   // Scroll handler to update active sidebar option
   useEffect(() => {
     let ticking = false;
+    let lastActiveSection = 0;
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -140,7 +141,11 @@ const ServicesSection = () => {
             if (idx === offsets.length - 1) return offset < window.innerHeight / 2;
             return offset < window.innerHeight / 2 && offsets[idx + 1] > window.innerHeight / 2;
           });
-          setActiveSection(activeIdx === -1 ? 0 : activeIdx);
+          const newActiveSection = activeIdx === -1 ? 0 : activeIdx;
+          if (lastActiveSection !== newActiveSection) {
+            setActiveSection(newActiveSection);
+            lastActiveSection = newActiveSection;
+          }
           ticking = false;
         });
         ticking = true;
@@ -159,7 +164,7 @@ const ServicesSection = () => {
     <div className="relative min-h-screen bg-gradient-to-br from-[#f0f4ff] via-[#e0e7ff] to-[#f0f0f0] pb-20">
       {/* Hero Section */}
       <AnimatedScrollContainer>
-        <section className="w-full flex flex-col items-start justify-center py-16 sm:py-28 px-2 sm:px-4 text-left bg-gradient-to-r from-[#e0e7ff] via-[#c5d3ff] to-[#f0f4ff] relative overflow-hidden">
+        <section className="w-full flex flex-col items-start justify-center py-16 sm:py-28 px-2 sm:px-4 text-left bg-transparent relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#90caf9]/20 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto w-full">
             <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#463cc9] via-[#6a5afc] to-[#90caf9] text-transparent bg-clip-text drop-shadow-lg mb-2 sm:mb-4">
@@ -171,12 +176,12 @@ const ServicesSection = () => {
           </div>
         </section>
       </AnimatedScrollContainer>
-      <hr className="my-8 border-t-2 border-[#e0e7ff] w-full" />
+      <hr className="my-8 border-t-2 border-[#e0e7ff] w-1/2" />
 
       {/* Sidebar + Main Content */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 md:gap-8 px-2 sm:px-4 mt-[-30px] md:mt-[-60px] z-10 relative">
         {/* Sidebar */}
-        <aside className="hidden md:block w-64 sticky top-32 self-start">
+        <aside className="hidden md:block w-64 sticky top-[12rem] self-start">
           <nav className="flex flex-col gap-4 bg-white/80 rounded-2xl shadow-xl p-6">
             {serviceCategories.map((cat, idx) => (
               <button
