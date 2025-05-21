@@ -11,20 +11,12 @@ import { RevealImageListDemo } from "./HomePage/reveal-images/demo";
 export default function Home() {
   return (
     <>
-      {/* <HeroSection /> */}
       <RobotSection />
       <AboutSection />
       <ServicesSection />
       <RevealImageListDemo/>
       <HeroDemo />
-      {/* <AnimatedBeamDemo /> */}
       <Overlay />
-
-      {/* <div className="space-y-13 pb-0 bg-[#f2f3f4] mt-20">
-        <BannerGrid />
-        <TrustedBy />
-      </div> */}
-
       <FooterNav />
     </>
   );
