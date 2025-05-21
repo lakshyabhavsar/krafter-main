@@ -18,7 +18,7 @@ export default function AboutSection() {
           {/* Content Column */}
           <div className="space-y-8">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-[#5b35b5] via-[#7c3aed] to-[#5b35b5] bg-clip-text text-transparent drop-shadow-md">
-              We're just getting started
+              {"We're just getting started"}
             </h2>
             <p className="text-[#464647] text-base sm:text-lg lg:text-xl leading-relaxed">
               Codekrafter is growing fast, and we are always looking for passionate, dynamic, and talented individuals to join our distributed team all around the world.
