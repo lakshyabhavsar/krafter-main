@@ -29,9 +29,7 @@ export default function Home() {
         <TrustedBy />
       </div> */}
 
-      <div className="-mb-24">
-          <FooterNav />
-        </div>
+      <FooterNav />
     </>
   );
 }

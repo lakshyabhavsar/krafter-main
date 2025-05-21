@@ -152,7 +152,7 @@ const ServicesSection = () => {
     <div className="relative min-h-screen bg-gradient-to-br from-[#f0f4ff] via-[#e0e7ff] to-[#f0f0f0] pb-20">
       {/* Hero Section */}
       <AnimatedScrollContainer>
-        <section className="w-full flex flex-col items-start justify-center py-12 sm:py-20 px-2 sm:px-4 text-left bg-gradient-to-r from-[#e0e7ff] via-[#c5d3ff] to-[#f0f4ff] relative overflow-hidden">
+        <section className="w-full flex flex-col items-start justify-center py-4 sm:py-8 px-2 sm:px-4 text-left bg-gradient-to-r from-[#e0e7ff] via-[#c5d3ff] to-[#f0f4ff] relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#90caf9]/20 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto w-full">
             <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#463cc9] via-[#6a5afc] to-[#90caf9] text-transparent bg-clip-text drop-shadow-lg mb-2 sm:mb-4">

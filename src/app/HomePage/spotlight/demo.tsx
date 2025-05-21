@@ -3,17 +3,17 @@ import { Hero } from "./hero"
 function HeroDemo() {
   return (
     <Hero
-      title="Join Our Team: Explore Exciting Careers at Krafter"
+      title="Join Our Team: Explore Exciting Careers at CodeKrafters"
       subtitle="Discover job opportunities, grow your career, and work with industry leaders. Apply now to be part of our innovative team."
       actions={[
         {
-          label: "Try Demo",
+          label: "Join Us",
           href: "#",
-          variant: "outline"
+          variant: "default"
         },
         {
-          label: "Start Free",
-          href: "#",
+          label: "Explore Careers",
+          href: "/careers",
           variant: "default"
         }
       ]}

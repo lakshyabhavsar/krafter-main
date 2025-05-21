@@ -42,7 +42,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
       <section
         ref={ref}
         className={twMerge(clsx(
-          "relative z-0 flex min-h-[80vh] w-full flex-col items-center justify-center overflow-hidden bg-black",
+          "relative z-0 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black py-16 md:py-24",
           className,
         ))}
         {...props}
@@ -125,7 +125,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
           viewport={{ once: true }}
           transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
           whileInView={{ y: 0, opacity: 1 }}
-          className="relative z-50 container flex justify-center flex-1 flex-col px-5 md:px-10 gap-4 mt-20"
+          className="relative z-50 container flex justify-center flex-1 flex-col px-5 md:px-10 gap-8 mt-24"
         >
           <div className="flex flex-col items-center text-center space-y-4">
             <h3
